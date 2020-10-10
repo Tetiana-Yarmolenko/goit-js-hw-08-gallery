@@ -9,8 +9,7 @@ const closeModalBtn = document.querySelector('[data-action="close-lightbox"]');
 const lightBoxImage = document.querySelector(".lightbox__image");
 const lightBox = document.querySelector(".lightbox");
 const lightboxOverlay = document.querySelector(".lightbox__overlay");
-let index = 0;
-let elLastChild = 0;
+
 
 
 gallery.insertAdjacentHTML("beforeend", cardsMarkup);
@@ -65,26 +64,11 @@ function onEscKeyCloseModal(event) {
 
 
 function onChangePhoto(e) {
-  const arrOfSrc = [];
-  const arrayOflightBoxImage = document.querySelectorAll('.gallery__link');
-  arrayOflightBoxImage.forEach(src => arrOfSrc.push(src.href));
   
-  for (let i = 0; i < arrOfSrc.length; i +=1){
-    elLastChild = i;
-    if (lightBoxImage.src === arrOfSrc[i]) {
-      index = i;
-    }
-  }
   if (e.code === 'ArrowRight') {
-    lightBoxImage.src = arrOfSrc[index +=1];
-    if (index >= arrOfSrc.length) {
-      lightBoxImage.src = arrOfSrc[0];
-    }
+    
   }
   if (e.code === 'ArrowLeft') {
-    lightBoxImage.src = arrOfSrc[index -= 1];
-    if (index < 0) {
-      lightBoxImage.src = arrOfSrc[elLastChild];
-    }
+    
   }
 }
