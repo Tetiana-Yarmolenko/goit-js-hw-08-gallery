@@ -64,27 +64,25 @@ function onEscKeyCloseModal(event) {
 }
 
 
+
 function onChangePhoto(e) {
-  const arrOfSrc = [];
-  const arrayOflightBoxImage = document.querySelectorAll('.gallery__link');
-  arrayOflightBoxImage.forEach(src => arrOfSrc.push(src.href));
-  
-  for (let i = 0; i < arrOfSrc.length; i +=1){
+  const image = images.map((item) => { return item.original });
+  for (let i = 0; i < image.length; i += 1) {
     elLastChild = i;
-    if (lightBoxImage.src === arrOfSrc[i]) {
+    if (lightBoxImage.src === image[i]) {
       index = i;
     }
   }
   if (e.code === 'ArrowRight') {
-    lightBoxImage.src = arrOfSrc[index +=1];
-    if (index >= arrOfSrc.length) {
-      lightBoxImage.src = arrOfSrc[0];
+    lightBoxImage.src = image[index += 1];
+    if (index >= image.length) {
+      lightBoxImage.src = image[0];
     }
   }
   if (e.code === 'ArrowLeft') {
-    lightBoxImage.src = arrOfSrc[index -= 1];
+    lightBoxImage.src = image[index -= 1];
     if (index < 0) {
-      lightBoxImage.src = arrOfSrc[elLastChild];
+      lightBoxImage.src = image[elLastChild];
     }
   }
 }
